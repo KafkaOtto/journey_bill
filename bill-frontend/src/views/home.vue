@@ -7,8 +7,7 @@
       <el-avatar
         icon="el-icon-user-solid"
         style="color: #222; float: right; padding: 20px"
-        >{{ this.$store.state.user.firstName }}</el-avatar
-      >
+      >{{ this.$store.state.user.firstName }}</el-avatar>
     </el-header>
     <!-- 主体 -->
     <el-container>
