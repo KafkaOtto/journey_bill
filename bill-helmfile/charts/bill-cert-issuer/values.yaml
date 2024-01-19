@@ -1,0 +1,23 @@
+_: &email guozhinuan2@gmail.com
+_: &solvers
+  - http01:
+      ingress:
+        class: nginx
+
+clusterIssuers:
+  - name: letsencrypt-prod
+    spec:
+      acme:
+        email: *email
+        server: https://acme-v02.api.letsencrypt.org/directory
+        privateKeySecretRef:
+          name: letsencrypt-prod
+        solvers: *solvers
+  - name: letsencrypt-staging
+    spec:
+      acme:
+        email: *email
+        server: https://acme-staging-v02.api.letsencrypt.org/directory
+        privateKeySecretRef:
+          name: letsencrypt-staging
+        solvers: *solvers
