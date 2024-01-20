@@ -28,6 +28,7 @@ serviceAccount:
 podAnnotations: {}
 podLabels:
   role: frontend
+  bill-spring-client: "true"
 
 podSecurityContext: {}
   # fsGroup: 2000
@@ -41,7 +42,7 @@ securityContext: {}
   # runAsUser: 1000
 
 service:
-  type: ClusterIP
+  type: LoadBalancer
   port: 80
 
 ingress:
@@ -79,21 +80,68 @@ autoscaling:
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 
+nginxConfig: |
+  upstream backend {
+    server bill-spring:8088;
+  }
+  server {
+    listen       80;
+    location / {
+      root   /usr/share/nginx/html;
+      index  index.html index.htm;
+      try_files $uri $uri/ /index.html;
+    }
+    location /api {
+      proxy_pass http://backend;
+    }
+  }
+
 # Additional volumes on the output Deployment definition.
-volumes: []
-# - name: foo
-#   secret:
-#     secretName: mysecret
-#     optional: false
+volumes:
+  - name: nginx-config
+    configMap:
+      name: bill-vue-nginx-config
+      items:
+        - key: nginx.conf
+          path: nginx.conf
 
 # Additional volumeMounts on the output Deployment definition.
-volumeMounts: []
-# - name: foo
-#   mountPath: "/etc/foo"
-#   readOnly: true
+volumeMounts:
+  - name: nginx-config
+    mountPath: /etc/nginx/conf.d
+#    subPath: nginx.conf
+    readOnly: true
 
 nodeSelector: {}
 
 tolerations: []
 
 affinity: {}
+
+networkPolicy:
+  ## @param networkPolicy.enabled Enable creation of NetworkPolicy resources
+  ##
+  enabled: true
+  ## @param networkPolicy.allowExternal The Policy model to apply.
+  ## When set to false, only pods with the correct
+  ## client label will have network access to the port MySQL is listening
+  ## on. When true, MySQL will accept connections from any source
+  ## (with the correct destination port).
+  ##
+  allowExternal: false
+  ## @param networkPolicy.explicitNamespacesSelector A Kubernetes LabelSelector to explicitly select namespaces from which ingress traffic could be allowed to MySQL
+  ## If explicitNamespacesSelector is missing or set to {}, only client Pods that are in the networkPolicy's namespace
+  ## and that match other criteria, the ones that have the good label, can reach the DB.
+  ## But sometimes, we want the DB to be accessible to clients from other namespaces, in this case, we can use this
+  ## LabelSelector to select these namespaces, note that the networkPolicy's namespace should also be explicitly added.
+  ##
+  ## Example:
+  ## explicitNamespacesSelector:
+  ##   matchLabels:
+  ##     role: frontend
+  ##   matchExpressions:
+  ##    - {key: role, operator: In, values: [frontend]}
+  ##
+  explicitNamespacesSelector:
+    matchLabels:
+      name: ingress
