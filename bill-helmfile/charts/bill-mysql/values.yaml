@@ -43,7 +43,8 @@ clusterDomain: cluster.local
 commonAnnotations: {}
 ## @param commonLabels Common labels to add to all MySQL resources (sub-charts are not considered). Evaluated as a template
 ##
-commonLabels: {}
+commonLabels:
+  role: db
 ## @param extraDeploy Array with extra yaml to deploy with the chart. Evaluated as a template
 ##
 extraDeploy: []
@@ -1074,7 +1075,7 @@ rbac:
 networkPolicy:
   ## @param networkPolicy.enabled Enable creation of NetworkPolicy resources
   ##
-  enabled: false
+  enabled: true
   ## @param networkPolicy.allowExternal The Policy model to apply.
   ## When set to false, only pods with the correct
   ## client label will have network access to the port MySQL is listening
@@ -1095,7 +1096,9 @@ networkPolicy:
   ##   matchExpressions:
   ##    - {key: role, operator: In, values: [frontend]}
   ##
-  explicitNamespacesSelector: {}
+  explicitNamespacesSelector:
+    matchLabels:
+      role: frontend
 
 ## @section Volume Permissions parameters
 ##

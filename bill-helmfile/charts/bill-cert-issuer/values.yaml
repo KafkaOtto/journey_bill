@@ -1,23 +1,14 @@
-_: &email guozhinuan2@gmail.com
-_: &solvers
-  - http01:
-      ingress:
-        class: nginx
+selfsignedIssuer:
+  name: bill-selfsigned-issuer
 
-clusterIssuers:
-  - name: letsencrypt-prod
-    spec:
-      acme:
-        email: *email
-        server: https://acme-v02.api.letsencrypt.org/directory
-        privateKeySecretRef:
-          name: letsencrypt-prod
-        solvers: *solvers
-  - name: letsencrypt-staging
-    spec:
-      acme:
-        email: *email
-        server: https://acme-staging-v02.api.letsencrypt.org/directory
-        privateKeySecretRef:
-          name: letsencrypt-staging
-        solvers: *solvers
+selfsignedCa:
+  name: bill-selfsigned-ca
+  commonName: bill-selfsigned-ca
+  secretName: bill-ca-secret
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+
+caIssuer:
+  name: bill-ca-issuer
+  secretName: bill-ca-secret
