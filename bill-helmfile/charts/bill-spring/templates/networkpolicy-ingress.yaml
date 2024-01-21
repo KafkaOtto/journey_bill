@@ -8,6 +8,7 @@ kind: NetworkPolicy
 apiVersion: networking.k8s.io/v1
 metadata:
   name: {{ include "bill-spring.fullname" . }}
+  namespace: {{ include "common.names.namespace" . | quote }}
   labels: {{- include "bill-spring.labels" . | nindent 4 }}
   {{- if .Values.commonAnnotations }}
   annotations: {{- include "common.tplvalues.render" ( dict "value" .Values.commonAnnotations "context" $ ) | nindent 4 }}
