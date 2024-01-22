@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="nl.vu.mapper.RecordMapper">
+
+    <resultMap id="RecordResultMap" type="com.example.demo.entity.Record">
+        <id property="recordId" column="record_id" jdbcType="INTEGER"/>
+        <result property="userId" column="user_id" jdbcType="VARCHAR"/>
+        <result property="activity" column="activity" jdbcType="VARCHAR"/>
+        <result property="totalAmount" column="total_amount" jdbcType="FLOAT"/>
+        <result property="time" column="time" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <insert id="addRecord" parameterType="com.example.demo.entity.Record">
+        INSERT INTO records (user_id, activity, total_amount)
+        VALUES (#{userId}, #{activity}, #{totalAmount})
+    </insert>
+
+    <delete id="deleteRecord" parameterType="int">
+        DELETE FROM records
+        WHERE record_id = #{recordId}
+    </delete>
+
+    <select id="findByRecordId" parameterType="INTEGER" resultMap="RecordResultMap" resultType="Record">
+        SELECT * FROM records
+        WHERE record_id = #{recordId}
+    </select>
+
+    <select id="findAllByUser" parameterType="int" resultMap="RecordResultMap" resultType="Record">
+        SELECT * FROM records
+        WHERE user_id = #{userId}
+    </select>
+
+</mapper>
