@@ -26,7 +26,7 @@
           size="mini"
           type="danger"
           round
-          @click="handleDelete(scope.$index, scope.row)">Delete Bill</el-button>
+          @click="deleteTheBill(scope.row.billID)">Delete Bill</el-button>
       </template>
      
     </el-table-column>
@@ -36,26 +36,36 @@
   </template>
 
   <script>
+  import { deleteBill } from '../api/user'
     export default {
       data() {
         return {
           tableData: [{
             date: '2016-05-02',
             location: 'Madrid',
-            money: 113
+            money: 113,
+            billID: 12321
           }, {
             date: '2019-05-02',
             location: 'Amsterdam',
-            money: 245
+            money: 245,
+            billID: 32123
           }, {
             date: '2023-05-02',
             location: 'London',
-            money: 13.77
+            money: 13.77,
+            billID: 54687
           }, {
             date: '2020-05-02',
             location: 'Paris',
-            money: 751.8888
+            money: 751.8888,
+            billID: 98751
           }]
+        }
+      },
+      methods: {
+        deleteTheBill(billID) {
+          deleteBill(billID)
         }
       }
     }
