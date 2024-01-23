@@ -4,10 +4,13 @@ package nl.vu.service.impl;
 import nl.vu.entity.Record;
 import nl.vu.mapper.RecordMapper;
 import nl.vu.service.RecordService;
+import nl.vu.vo.RecordVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class RecordServiceImpl implements RecordService {
@@ -26,17 +29,39 @@ public class RecordServiceImpl implements RecordService {
         return row_num;
     }
 
+
     @Override
-    public Record findByRecordId(Integer recordId) {
+    public ResponseEntity<RecordVO> findByRecordId(Integer recordId) {
         Record record = recordMapper.findByRecordId(recordId);
-        return record;
+        RecordVO recordVO = RecordVO.builder()
+                .recordId(record.getRecordId())
+                .userId(record.getUserId())
+                .activity(record.getActivity())
+                .totalAmount(record.getTotalAmount())
+                .time(record.getTime())
+                .build();
+        return ResponseEntity.ok(recordVO);
     }
 
     @Override
-    public List<Record> findAllByUser(Integer userId) {
-        List<Record> list = recordMapper.findAllByUser(userId);
-        return list;
+    public ResponseEntity<List<RecordVO>> findAllByUser(Integer userId) {
+        List<Record> records = recordMapper.findAllByUser(userId);
+
+        // Assuming RecordVO.builder() and related methods are properly implemented
+        List<RecordVO> recordVOList = records.stream()
+                .map(record -> RecordVO.builder()
+                        .recordId(record.getRecordId())
+                        .userId(record.getUserId())
+                        .activity(record.getActivity())
+                        .totalAmount(record.getTotalAmount())
+                        .time(record.getTime())
+                        .build())
+                .collect(Collectors.toList());
+
+        // Returning ResponseEntity with HTTP status OK and List<RecordVO> as the response body
+        return ResponseEntity.ok(recordVOList);
     }
+
 
     @Override
     public float getTotal(Integer userId) {

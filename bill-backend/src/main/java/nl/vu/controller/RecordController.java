@@ -2,8 +2,11 @@ package nl.vu.controller;
 
 
 import nl.vu.entity.Record;
+import nl.vu.result.Result;
 import nl.vu.service.RecordService;
+import nl.vu.vo.RecordVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,32 +19,43 @@ public class RecordController {
     RecordService recordService;
 
     @GetMapping("/findByRecordId/{recordId}")
-    public Record findByRecordId(@PathVariable Integer recordId){
-        Record record = recordService.findByRecordId(recordId);
-        return record;
+    public ResponseEntity<RecordVO> findByRecordId(@PathVariable Integer recordId){
+        return recordService.findByRecordId(recordId);
     }
 
     @GetMapping("/recordsByUid/{userId}")
-    public List<Record> findAllByUser(@PathVariable Integer userId){
-        List<Record> record_list = recordService.findAllByUser(userId);
-        return record_list;
+    public ResponseEntity<List<RecordVO>> findAllByUser(@PathVariable Integer userId){
+        return recordService.findAllByUser(userId);
     }
 
     @PostMapping("/")
-    public String addRecord(@RequestBody Record record){
-        int row  = recordService.addRecord(record);
-        return "adding a new record successfully";
+    public Result addRecord(@RequestBody Record record){
+        try{
+            return new Result(200, "adding a new record successfully", recordService.addRecord(record));
+        }catch (Exception e) {
+            // If an exception occurs during the updateUser operation, you might handle it here
+            return new Result(500, "Error: adding a new record: " + e.getMessage(), null);
+        }
     }
 
+
     @DeleteMapping("/{record_id}")
-    public String deleteRecord(@PathVariable int record_id){
-        int row = recordService.deleteRecord(record_id);
-        return "deleting record successfully";
+    public Result deleteRecord(@PathVariable int record_id){
+        try{
+            return new Result(200, "deleting a new record successfully", recordService.deleteRecord(record_id));
+        }catch (Exception e) {
+            // If an exception occurs during the updateUser operation, you might handle it here
+            return new Result(500, "Error: deleting a new record: " + e.getMessage(), null);
+        }
     }
 
     @GetMapping("/getTotalByUid/{userId}")
-    public float getTotal(@PathVariable int userId){
-        return recordService.getTotal(userId);
+    public Result getTotal(@PathVariable int userId){
+        try{
+            return new Result(200, "ok", recordService.getTotal(userId));
+        }catch (Exception e) {
+            // If an exception occurs during the updateUser operation, you might handle it here
+            return new Result(500, "Error: calculating the total amount" + e.getMessage(), null);
+        }
     }
-
 }
