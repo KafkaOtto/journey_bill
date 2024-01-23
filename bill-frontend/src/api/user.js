@@ -7,19 +7,27 @@ export function userLogin(data) {
     data
   })
 
-  function addBill(data) {
+  function getBills(userID) {
     return request({
-      url:'/#/index',
-      method:'post',
-      data
+      url:'/recordsByUid/${userID}',
+      method:'get',
+      userID
     })
   }
 
-  function addBill(data) {
+  function addBill(record) {
     return request({
-      url:'/#/index',
+      url:'/',
+      method:'post',
+      record
+    })
+  }
+
+  function deleteBill(recordID) {
+    return request({
+      url:'/${recordID}',
       method:'delete',
-      data
+      recordID
     })
   }
 }
