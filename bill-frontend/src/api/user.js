@@ -6,5 +6,21 @@ export function userLogin(data) {
     method: 'post',
     data
   })
+
+  function addBill(data) {
+    return request({
+      url:'/#/index',
+      method:'post',
+      data
+    })
+  }
+
+  function addBill(data) {
+    return request({
+      url:'/#/index',
+      method:'delete',
+      data
+    })
+  }
 }
 
