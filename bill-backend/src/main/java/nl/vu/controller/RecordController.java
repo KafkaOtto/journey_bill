@@ -1,6 +1,7 @@
 package nl.vu.controller;
 
 
+import nl.vu.dto.RecordDTO;
 import nl.vu.entity.Record;
 import nl.vu.result.Result;
 import nl.vu.service.RecordService;
@@ -10,9 +11,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin
 @RestController
-@RequestMapping(value = "record", method = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE})
+@RequestMapping(value = "api/record", method = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE})
 public class RecordController {
 
     @Autowired
@@ -29,10 +30,12 @@ public class RecordController {
     }
 
     @PostMapping("/")
-    public Result addRecord(@RequestBody Record record){
+    public Result addRecord(@RequestBody RecordDTO recordDTO){
         try{
-            return new Result(200, "adding a new record successfully", recordService.addRecord(record));
+            System.out.println(recordDTO);
+            return new Result(200, "adding a new record successfully", recordService.addRecord(recordDTO));
         }catch (Exception e) {
+            System.out.println(e);
             // If an exception occurs during the updateUser operation, you might handle it here
             return new Result(500, "Error: adding a new record: " + e.getMessage(), null);
         }
@@ -58,4 +61,5 @@ public class RecordController {
             return new Result(500, "Error: calculating the total amount" + e.getMessage(), null);
         }
     }
+
 }

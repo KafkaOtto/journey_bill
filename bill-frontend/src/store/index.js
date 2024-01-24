@@ -26,6 +26,9 @@ export default new Vuex.Store({
         }
     },
     getters: {
+        getUserId (state) {
+            return state.user["userId"]
+          }
 
     },
     actions: {

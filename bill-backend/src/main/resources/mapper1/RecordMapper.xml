@@ -3,21 +3,20 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="nl.vu.mapper.RecordMapper">
-
-    <resultMap id="RecordResultMap" type="com.example.demo.entity.Record">
+    <resultMap id="RecordResultMap" type="nl.vu.entity.Record">
         <id property="recordId" column="record_id" jdbcType="INTEGER"/>
-        <result property="userId" column="user_id" jdbcType="VARCHAR"/>
+        <result property="userId" column="user_id" jdbcType="INTEGER"/>
         <result property="activity" column="activity" jdbcType="VARCHAR"/>
         <result property="totalAmount" column="total_amount" jdbcType="FLOAT"/>
-        <result property="time" column="time" jdbcType="VARCHAR"/>
+        <result property="time" column="time_" jdbcType="VARCHAR"/>
     </resultMap>
 
-    <insert id="addRecord" parameterType="com.example.demo.entity.Record">
-        INSERT INTO records (user_id, activity, total_amount)
-        VALUES (#{userId}, #{activity}, #{totalAmount})
+    <insert id="addRecord" parameterType="nl.vu.dto.RecordDTO">
+        INSERT INTO records (user_id, activity, total_amount, time_)
+        VALUES (#{userId}, #{activity}, #{totalAmount},#{time})
     </insert>
 
-    <delete id="deleteRecord" parameterType="int">
+    <delete id="deleteRecord" parameterType="INTEGER">
         DELETE FROM records
         WHERE record_id = #{recordId}
     </delete>
@@ -27,7 +26,7 @@
         WHERE record_id = #{recordId}
     </select>
 
-    <select id="findAllByUser" parameterType="int" resultMap="RecordResultMap" resultType="Record">
+    <select id="findAllByUser" parameterType="INTEGER" resultMap="RecordResultMap" resultType="Record">
         SELECT * FROM records
         WHERE user_id = #{userId}
     </select>

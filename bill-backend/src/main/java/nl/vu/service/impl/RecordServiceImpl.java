@@ -1,6 +1,7 @@
 package nl.vu.service.impl;
 
 
+import nl.vu.dto.RecordDTO;
 import nl.vu.entity.Record;
 import nl.vu.mapper.RecordMapper;
 import nl.vu.service.RecordService;
@@ -18,8 +19,8 @@ public class RecordServiceImpl implements RecordService {
     RecordMapper recordMapper;
 
     @Override
-    public int addRecord(Record record) {
-        int record_id = recordMapper.addRecord(record);
+    public int addRecord(RecordDTO recordDTO) {
+        int record_id = recordMapper.addRecord(recordDTO);
         return record_id;
     }
 
