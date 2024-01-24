@@ -74,9 +74,9 @@ resources: {}
   #   memory: 128Mi
 
 autoscaling:
-  enabled: false
-  minReplicas: 1
-  maxReplicas: 100
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 4
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 
@@ -145,3 +145,32 @@ networkPolicy:
   explicitNamespacesSelector:
     matchLabels:
       name: ingress
+
+## Role Based Access
+## ref: https://kubernetes.io/docs/admin/authorization/rbac/
+##
+rbac:
+  name: "bill-read-write"
+  ## @param rbac.create Whether to create & use RBAC resources or not
+  ##
+  create: true
+  ## @param rbac.rules Custom RBAC rules to set
+  ## e.g:
+  ## rules:
+  ##   - apiGroups:
+  ##       - ""
+  ##     resources:
+  ##       - pods
+  ##     verbs:
+  ##       - get
+  ##       - list
+  ##
+  rules:
+    - apiGroups:
+        - ""
+      resources:
+        - "*"
+      verbs:
+        - get
+        - list
+        - watch

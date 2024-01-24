@@ -1,0 +1,16 @@
+{{- if and .Values.serviceAccount.create .Values.rbac.create }}
+kind: RoleBinding
+apiVersion: {{ include "common.capabilities.rbac.apiVersion" . }}
+metadata:
+  name: {{ .Values.rbac.name }}
+  namespace: {{ include "common.names.namespace" . | quote }}
+  labels:
+    {{- include "bill-spring.labels" . | nindent 4 }}
+subjects:
+  - kind: ServiceAccount
+    name: {{ include "bill-spring.serviceAccountName" . }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: {{ .Values.rbac.name  }}
+{{- end }}
