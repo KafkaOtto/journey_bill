@@ -1,0 +1,46 @@
+#repositories:
+#  - name: stable
+#    url: https://charts.helm.sh/stable
+#  - name: bitnami
+#    url:  https://charts.bitnami.com/bitnami
+#  - name: adfinis
+#    url:  https://charts.adfinis.com
+helmDefaults:
+  atomic: false
+  verify: false
+  wait: true
+  timeout: 1200
+  recreatePods: true
+  force: true
+
+releases:
+  - name: bill-cert
+    chart: ./charts/bill-cert-manager
+    wait: true
+    waitForJobs: true
+    installed: true
+  - name: bill-issuers
+    chart: ./charts/bill-cert-issuer
+    wait: true
+    waitForJobs: true
+    needs:
+      - bill-cert
+  - name: bill-mysql
+    chart: ./charts/bill-mysql
+    wait: true
+  - name: bill-spring
+    chart: ./charts/bill-spring
+    needs:
+      - bill-mysql
+    wait: true
+  - name: bill-vue
+    chart: ./charts/bill-vue
+    wait: true
+  - name: bill-nginx
+    chart: ./charts/bill-nginx
+    wait: true
+    waitForJobs: true
+    needs:
+      - bill-issuers
+      - bill-spring
+      - bill-vue

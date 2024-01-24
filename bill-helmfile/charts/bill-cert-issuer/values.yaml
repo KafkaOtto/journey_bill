@@ -1,0 +1,14 @@
+selfsignedIssuer:
+  name: bill-selfsigned-issuer
+
+selfsignedCa:
+  name: bill-selfsigned-ca
+  commonName: bill-selfsigned-ca
+  secretName: bill-ca-secret
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+
+caIssuer:
+  name: bill-ca-issuer
+  secretName: bill-ca-secret

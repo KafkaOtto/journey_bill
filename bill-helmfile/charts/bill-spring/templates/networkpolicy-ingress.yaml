@@ -1,0 +1,33 @@
+{{- /*
+   Copyright VMware, Inc.
+  SPDX-License-Identifier: APACHE-2.0
+  */}}
+
+  {{- if .Values.networkPolicy.enabled }}
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: {{ include "bill-spring.fullname" . }}
+  namespace: {{ include "common.names.namespace" . | quote }}
+  labels: {{- include "bill-spring.labels" . | nindent 4 }}
+  {{- if .Values.commonAnnotations }}
+  annotations: {{- include "common.tplvalues.render" ( dict "value" .Values.commonAnnotations "context" $ ) | nindent 4 }}
+  {{- end }}
+spec:
+  podSelector:
+    matchLabels: {{- include "bill-spring.selectorLabels" . | nindent 6 }}
+  ingress:
+    # Allow inbound connections
+    - ports:
+        - port: {{ .Values.service.port }}
+      {{- if not .Values.networkPolicy.allowExternal }}
+      from:
+        - podSelector:
+            matchLabels:
+              {{ include "bill-spring.fullname" . }}-client: "true"
+          {{- if .Values.networkPolicy.explicitNamespacesSelector }}
+          namespaceSelector:
+  {{ toYaml .Values.networkPolicy.explicitNamespacesSelector | indent 12 }}
+  {{- end }}
+  {{- end }}
+  {{- end }}

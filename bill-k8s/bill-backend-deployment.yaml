@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bill-spring
+  labels:
+    app: bill-spring
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: bill-spring
+  template:
+    metadata:
+      labels:
+        app: bill-spring
+    spec:
+      containers:
+        - name: bill-spring
+          image: ottokafka2/bill-backend:0.0.4
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 8088
+          resources:
+            limits:
+              cpu: 0.2
+              memory: "1Gi"
+          env:
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-pass
+                  key: mysql-user-password
+            - name: DB_SERVER
+              valueFrom:
+                configMapKeyRef:
+                  name:  mysql-config-map
+                  key: mysql-server
+            - name: DB_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name:  mysql-config-map
+                  key: mysql-database-name
+            - name: DB_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: mysql-config-map
+                  key: mysql-user-username
+#      imagePullSecrets:
+#        - name: regcred
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bill-spring
+  labels:
+    app: bill-spring
+spec:
+#  type: NodePort
+  selector:
+    app: bill-spring
+  ports:
+    - port: 8088

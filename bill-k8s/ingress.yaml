@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: bill-ingress
+  annotations:
+spec:
+  tls:
+    - hosts:
+        - bill.local
+      secretName: bill-tls
+  rules:
+    - host: bill.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: bill-vue
+                port:
+                  number: 80
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: bill-spring
+                port:
+                  number: 8088
