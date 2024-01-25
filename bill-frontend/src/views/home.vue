@@ -1,53 +1,44 @@
 <template>
+  <body>
   <el-container class="home-container">
     <!--顶部-->
     <el-header style="margin-right: 15px; width: 100%">
-      <span class="nav-logo">😀</span>
-      <span class="head-title">Just A Demo</span>
-      <el-avatar
+      <span class="nav-logo">😊    🧾</span>
+      <span class="head-title">Hii, <i style="color: hsl(25, 94%, 52%)">{{ this.$store.state.user.firstName }}  </i>! Welcome to your bill page.</span>
+      <!-- <el-avatar
         icon="el-icon-user-solid"
         style="color: #222; float: right; padding: 20px"
-      >{{ this.$store.state.user.firstName }}</el-avatar>
+      >{{ this.$store.state.user.firstName }}</el-avatar> -->
     </el-header>
-    <!-- 主体 -->
+    
     <el-container>
+
       <!-- 侧边栏 -->
       <el-aside width="13%">
-        <el-menu
-          :default-active="$route.path"
-          router
-          text-color="black"
-          active-text-color="red"
-        >
-          <el-menu-item
-            v-for="(item, i) in navList"
-            :key="i"
-            :index="item.name"
-          >
-            <i :class="item.icon"></i>
-            {{ item.title }}
-          </el-menu-item>
-        </el-menu>
+        <router-view name= "aside"> </router-view>
       </el-aside>
+
+
+      <!-- 主体 -->
       <el-main>
         <!--路由占位符-->
-        <router-view></router-view>
+        <router-view></router-view>        
+
       </el-main>
     </el-container>
   </el-container>
+</body>
 </template>
 
 <script>
+
 export default {
-  name: "Home",
-  data() {
-    return {
-      navList: [
-        { name: "/index", title: "main", icon: "el-icon-s-home" },
-        // { name: "/user", title: "",icon:"el-icon-s-custom" },
-      ],
-    };
-  },
+    name: "Home",
+    data() {
+        return {
+
+        };
+    },
 };
 </script>
 
@@ -66,6 +57,7 @@ export default {
   font-size: 20px;
   font-weight: bold;
 }
+
 
 
 </style>

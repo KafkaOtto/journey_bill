@@ -28,6 +28,7 @@
       </el-form-item>
     </el-form>
   </body>
+
 </template>
 
 <script>
@@ -56,8 +57,8 @@ export default {
         _this.$store.commit('SET_TOKEN', token);
         _this.$store.commit('SET_USER', user);
         var path = this.$route.query.redirect
-        console.log(token);
-        console.log(path);
+        console.log("token: ",token);
+        console.log("path", path);
         this.$router.replace({path: path === '/' || path === undefined ? '/' : path})
       });
     },
@@ -67,7 +68,7 @@ export default {
 
 <style scoped>
 #login-page {
-  background: url("../assets/img/bg.jpg") no-repeat;
+  background: url("../assets/img/background.jpg") no-repeat;
   background-position: center;
   height: 100%;
   width: 100%;
@@ -83,7 +84,7 @@ body {
   margin: 90px auto;
   width: 350px;
   padding: 35px 35px 15px 35px;
-  background: #fff;
+  background: #d8d7d4e5;
   border: 1px solid #eaeaea;
   box-shadow: 0 0 25px #cac6c6;
 }

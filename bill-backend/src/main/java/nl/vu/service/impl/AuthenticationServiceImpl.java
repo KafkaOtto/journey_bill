@@ -46,7 +46,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
             throw new IllegalArgumentException("Invalid email or password.");
         }
 
-        UserVO userVO = UserVO.builder().firstName(user.getFirstName()).lastName(user.getLastName()).email(user.getEmail())
+        UserVO userVO = UserVO.builder().firstName(user.getFirstName()).lastName(user.getLastName()).email(user.getEmail()).userId(user.getId())
                 .build();
         //login success, add token
         var jwt = tokenService.generateToken(user);

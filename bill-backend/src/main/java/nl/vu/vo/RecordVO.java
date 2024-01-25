@@ -5,16 +5,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserVO {
-
-    private String firstName;
-    private String lastName;
-    private String email;
-    private int userId;
-
+public class RecordVO {
+    private Integer recordId;
+    private Integer userId;
+    private String activity;
+    private float totalAmount;
+    private String time;
 }

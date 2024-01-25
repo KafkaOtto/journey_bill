@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import nl.vu.service.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -59,7 +60,8 @@ public class SecurityConfig {
                     configuration.setAllowedHeaders(Arrays.asList("*"));
                     return configuration;
                 }))
-                .authorizeHttpRequests(request -> request.requestMatchers("/api/auth/**")
+                .authorizeHttpRequests(request -> request
+                        .requestMatchers("/api/**")
                         .permitAll().anyRequest().authenticated())
                 .sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))
                 .authenticationProvider(authenticationProvider()).addFilterBefore(
