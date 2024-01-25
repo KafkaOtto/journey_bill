@@ -199,6 +199,37 @@ initdbScripts:
     INSERT INTO `user` VALUES (24, 'op', 'qr', '$2a$10$.6mcEOKBNjsOBhHFhHxPDuv2QKscC9KZSqouKa0ZhBtwz6h54dJWq', '18@qq.com', 'USER');
 
     SET FOREIGN_KEY_CHECKS = 1;
+    DROP TABLE IF EXISTS `records`;
+    CREATE TABLE records (
+        record_id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+        user_id int(11) NOT NULL,
+        activity VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+        total_amount FLOAT,
+        time_ VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT "2000-00-00"
+    );
+    INSERT INTO records (user_id, activity, total_amount, time_) VALUES (1, 'Mountain Hiking', 25.8, '2022-02-01');
+    INSERT INTO records (user_id, activity, total_amount, time_) VALUES (2, 'Beach Vacation', 40.5, '2022-02-01');
+    INSERT INTO records (user_id, activity, total_amount, time_) VALUES (3, 'City Sightseeing', 35.2, '2022-02-01');
+    INSERT INTO records (user_id, activity, total_amount, time_) VALUES (1, 'Camping', 18.3, '2022-02-02');
+    INSERT INTO records (user_id, activity, total_amount, time_) VALUES (2, 'Road Trip', 30.7, '2022-02-02');
+    INSERT INTO records (user_id, activity, total_amount, time_) VALUES (3, 'Historical Tour', 28.1, '2022-02-02');
+    INSERT INTO records (user_id, activity, total_amount, time_) VALUES (1, 'Skiing Trip', 22.6, '2022-02-03');
+    INSERT INTO records (user_id, activity, total_amount, time_) VALUES (2, 'Island Adventure', 37.4, '2022-02-03');
+    INSERT INTO records (user_id, activity, total_amount, time_) VALUES (3, 'National Park Visit', 32.0, '2022-02-03');
+    INSERT INTO records (user_id, activity, total_amount, time_) VALUES (1, 'Hot Air Balloon Ride', 15.9, '2022-02-04');
+    INSERT INTO records (user_id, activity, total_amount, time_) VALUES (2, 'Safari Expedition', 45.2, '2022-02-04');
+    INSERT INTO records (user_id, activity, total_amount, time_) VALUES (3, 'Cruise Vacation', 50.6, '2022-02-04');
+    INSERT INTO records (user_id, activity, total_amount, time_) VALUES (1, 'Backpacking Journey', 28.4, '2022-02-05');
+    INSERT INTO records (user_id, activity, total_amount, time_) VALUES (2, 'Sightseeing Tour', 36.8, '2022-02-05');
+    INSERT INTO records (user_id, activity, total_amount, time_) VALUES (3, 'Mountain Biking', 20.1, '2022-02-05');
+    INSERT INTO records (user_id, activity, total_amount, time_) VALUES (1, 'Cultural Exploration', 24.3, '2022-02-06');
+    INSERT INTO records (user_id, activity, total_amount, time_) VALUES (2, 'Luxury Getaway', 42.7, '2022-02-06');
+    INSERT INTO records (user_id, activity, total_amount, time_) VALUES (3, 'River Rafting', 31.5, '2022-02-06');
+    INSERT INTO records (user_id, activity, total_amount, time_) VALUES (1, 'Ziplining Adventure', 19.8, '2022-02-07');
+    INSERT INTO records (user_id, activity, total_amount, time_) VALUES (2, 'Historic Castle Tour', 39.0, '2022-02-07');
+
+    SET FOREIGN_KEY_CHECKS = 1;
+
 ## @param initdbScriptsConfigMap ConfigMap with the initdb scripts (Note: Overrides `initdbScripts`)
 ##
 initdbScriptsConfigMap: ""

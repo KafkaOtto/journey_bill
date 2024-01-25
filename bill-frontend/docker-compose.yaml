@@ -1,7 +1,7 @@
 version: '3'
 services:
   bill-vue:
-    image: ottokafka2/bill-vue:0.0.1
+    image: ottokafka2/bill-vue:0.0.2
     container_name: bill-vue
     environment:
       BASE_URL: 'http://127.0.0.1:8088'
