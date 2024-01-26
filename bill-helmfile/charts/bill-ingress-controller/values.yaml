@@ -11,7 +11,8 @@
 namespaceOverride: ""
 ## Labels to apply to all resources
 ##
-commonLabels: {}
+commonLabels:
+  bill-vue-client: "true"
 # scmhash: abc123
 # myLabel: aakkmd
 
