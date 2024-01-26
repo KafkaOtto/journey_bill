@@ -1,14 +1,206 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c37bc58b-5651-40c3-9ea8-fa837b75a2a8" name="Changes" comment="merge from main">
+    <list default="true" id="c37bc58b-5651-40c3-9ea8-fa837b75a2a8" name="Changes" comment="upgrade docker image version">
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/.helmignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/Chart.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/OWNERS" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/README.md.gotmpl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-2.10.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-2.11.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-2.11.1.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-2.11.2.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-2.11.3.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-2.12.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-2.12.1.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-2.13.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-2.14.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-2.15.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-2.16.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-2.9.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-2.9.1.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-3.0.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-3.10.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-3.10.1.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-3.11.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-3.11.1.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-3.12.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-3.13.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-3.14.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-3.15.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-3.15.1.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-3.16.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-3.16.1.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-3.17.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-3.18.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-3.19.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-3.20.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-3.20.1.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-3.21.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-3.22.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-3.23.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-3.24.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-3.25.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-3.26.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-3.27.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-3.28.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-3.29.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-3.3.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-3.3.1.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-3.30.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-3.31.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-3.32.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-3.33.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-3.34.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-3.4.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-3.5.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-3.5.1.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-3.6.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-3.7.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-3.7.1.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-3.8.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-3.9.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-4.0.1.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-4.0.10.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-4.0.11.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-4.0.12.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-4.0.13.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-4.0.14.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-4.0.15.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-4.0.18.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-4.0.2.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-4.0.3.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-4.0.5.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-4.0.6.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-4.0.7.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-4.0.9.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-4.1.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-4.1.2.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-4.2.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-4.2.1.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-4.3.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-4.4.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-4.5.2.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-4.6.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-4.6.1.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-4.7.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-4.7.1.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-4.7.2.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-4.8.0-beta.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-4.8.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-4.8.1.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-4.8.2.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-4.8.3.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart-4.9.0.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/changelog/helm-chart.md.gotmpl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/ci/controller-admission-tls-cert-manager-values.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/ci/controller-custom-ingressclass-flags.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/ci/daemonset-customconfig-values.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/ci/daemonset-customnodeport-values.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/ci/daemonset-extra-modules.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/ci/daemonset-headers-values.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/ci/daemonset-internal-lb-values.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/ci/daemonset-nodeport-values.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/ci/daemonset-podannotations-values.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/ci/daemonset-tcp-udp-configMapNamespace-values.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/ci/daemonset-tcp-udp-portNamePrefix-values.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/ci/daemonset-tcp-udp-values.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/ci/daemonset-tcp-values.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/ci/deamonset-default-values.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/ci/deamonset-metrics-values.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/ci/deamonset-psp-values.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/ci/deamonset-webhook-and-psp-values.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/ci/deamonset-webhook-values.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/ci/deployment-autoscaling-behavior-values.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/ci/deployment-autoscaling-values.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/ci/deployment-customconfig-values.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/ci/deployment-customnodeport-values.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/ci/deployment-default-values.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/ci/deployment-extra-modules-default-container-sec-context.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/ci/deployment-extra-modules-specific-container-sec-context.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/ci/deployment-extra-modules.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/ci/deployment-headers-values.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/ci/deployment-internal-lb-values.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/ci/deployment-metrics-values.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/ci/deployment-nodeport-values.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/ci/deployment-opentelemetry-customregistry-values.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/ci/deployment-podannotations-values.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/ci/deployment-psp-values.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/ci/deployment-tcp-udp-configMapNamespace-values.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/ci/deployment-tcp-udp-portNamePrefix-values.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/ci/deployment-tcp-udp-values.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/ci/deployment-tcp-values.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/ci/deployment-webhook-and-psp-values.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/ci/deployment-webhook-extraEnvs-values.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/ci/deployment-webhook-resources-values.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/ci/deployment-webhook-values.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/templates/NOTES.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/templates/_helpers.tpl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/templates/_params.tpl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/templates/admission-webhooks/cert-manager.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/templates/admission-webhooks/job-patch/clusterrole.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/templates/admission-webhooks/job-patch/clusterrolebinding.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/templates/admission-webhooks/job-patch/job-createSecret.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/templates/admission-webhooks/job-patch/job-patchWebhook.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/templates/admission-webhooks/job-patch/networkpolicy.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/templates/admission-webhooks/job-patch/psp.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/templates/admission-webhooks/job-patch/role.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/templates/admission-webhooks/job-patch/rolebinding.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/templates/admission-webhooks/job-patch/serviceaccount.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/templates/admission-webhooks/validating-webhook.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/templates/clusterrole.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/templates/clusterrolebinding.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/templates/controller-configmap-addheaders.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/templates/controller-configmap-proxyheaders.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/templates/controller-configmap-tcp.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/templates/controller-configmap-udp.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/templates/controller-configmap.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/templates/controller-daemonset.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/templates/controller-deployment.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/templates/controller-hpa.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/templates/controller-ingressclass.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/templates/controller-keda.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/templates/controller-networkpolicy.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/templates/controller-poddisruptionbudget.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/templates/controller-prometheusrules.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/templates/controller-psp.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/templates/controller-role.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/templates/controller-rolebinding.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/templates/controller-secret.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/templates/controller-service-internal.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/templates/controller-service-metrics.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/templates/controller-service-webhook.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/templates/controller-service.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/templates/controller-serviceaccount.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/templates/controller-servicemonitor.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/templates/default-backend-deployment.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/templates/default-backend-extra-configmaps.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/templates/default-backend-hpa.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/templates/default-backend-networkpolicy.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/templates/default-backend-poddisruptionbudget.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/templates/default-backend-psp.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/templates/default-backend-role.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/templates/default-backend-rolebinding.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/templates/default-backend-service.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/templates/default-backend-serviceaccount.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/tests/controller-configmap-addheaders_test.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/tests/controller-configmap-proxyheaders_test.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/tests/controller-configmap_test.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/tests/controller-daemonset_test.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/tests/controller-deployment_test.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/tests/controller-hpa_test.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/tests/controller-keda_test.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/tests/controller-networkpolicy_test.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/tests/controller-service-internal_test.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/tests/controller-service-metrics_test.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/tests/controller-service_test.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/tests/default-backend-extra-configmaps_test.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/tests/default-backend-service_test.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-ingress-controller/values.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bill-backend/docker.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bill-backend/docker.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bill-frontend/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bill-frontend/docker-compose.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bill-frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/bill-frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bill-helmfile/charts/bill-mysql/values.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-mysql/values.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bill-helmfile/charts/bill-spring/values.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-spring/values.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bill-helmfile/charts/bill-vue/values.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bill-helmfile/charts/bill-vue/values.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bill-helmfile/install.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bill-helmfile/install.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +277,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706184706866</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="upgrade docker image version">
+      <created>1706190994699</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1706190994700</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -132,6 +331,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="merge from main" />
-    <option name="LAST_COMMIT_MESSAGE" value="merge from main" />
+    <MESSAGE value="upgrade docker image version" />
+    <option name="LAST_COMMIT_MESSAGE" value="upgrade docker image version" />
   </component>
 </project>
