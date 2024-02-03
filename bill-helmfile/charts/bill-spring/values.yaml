@@ -152,7 +152,7 @@ networkPolicy:
 ## ref: https://kubernetes.io/docs/admin/authorization/rbac/
 ##
 rbac:
-  name: "bill-read-only"
+  name: "bill-developer"
   userName: "developer"
   ## @param rbac.create Whether to create & use RBAC resources or not
   ##

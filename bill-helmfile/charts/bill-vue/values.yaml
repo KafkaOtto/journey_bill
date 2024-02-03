@@ -150,7 +150,7 @@ networkPolicy:
 ## ref: https://kubernetes.io/docs/admin/authorization/rbac/
 ##
 rbac:
-  name: "bill-read-write"
+  name: "bill-guest"
   userName: "guest"
   ## @param rbac.create Whether to create & use RBAC resources or not
   ##
