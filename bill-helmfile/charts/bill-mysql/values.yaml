@@ -1059,7 +1059,7 @@ serviceAccount:
   ## @param serviceAccount.name Name of the created ServiceAccount
   ## If not set and create is true, a name is generated using the mysql.fullname template
   ##
-  name: "mysql-admin"
+  name: ""
   ## @param serviceAccount.annotations Annotations for MySQL Service Account
   ##
   annotations: {}
@@ -1074,6 +1074,7 @@ rbac:
   ## @param rbac.create Whether to create & use RBAC resources or not
   ##
   create: true
+  userName: "manager"
   ## @param rbac.rules Custom RBAC rules to set
   ## e.g:
   ## rules:
@@ -1089,7 +1090,7 @@ rbac:
     - apiGroups:
         - ""
       resources:
-        - pods
+        - "*"
       verbs:
         - get
         - list

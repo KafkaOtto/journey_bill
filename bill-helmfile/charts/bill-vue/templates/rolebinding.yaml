@@ -9,6 +9,8 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: {{ include "bill-vue.serviceAccountName" . }}
+  - kind: User
+    name: {{ .Values.rbac.userName}}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role

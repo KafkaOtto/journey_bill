@@ -153,6 +153,7 @@ networkPolicy:
 ##
 rbac:
   name: "bill-read-only"
+  userName: "developer"
   ## @param rbac.create Whether to create & use RBAC resources or not
   ##
   create: true
@@ -176,3 +177,4 @@ rbac:
         - get
         - list
         - watch
+        - create
