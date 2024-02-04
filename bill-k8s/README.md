@@ -40,4 +40,46 @@ kubectl create secret tls bill-tls --key bill.local-key.pem --cert bill.local.pe
 kubectl apply -f ingress.yaml 
 ```
 Now you can try to visit the https://bill.local to see the result.
- 
+# Ways to deploy rolling updates and canary updates
+
+### Getting started
+* prepare images show different backgrounds of Login page, see images in [dockerhub](https://hub.docker.com/r/ottokafka2/bill-vue) 
+  * ottokafka2/bill-vue:0.0.2 
+  * ottokafka2/bill-vue:0.0.3
+* prepare two deployment.yaml files for frontend
+  * bill-frontend-deployment.yaml with image: ottokafka2/bill-vue:0.0.2
+  * bill-frontend-deployments-canary.yaml with image: ottokafka2/bill-vue:0.0.3
+
+### Rolling Updates
+
+```shell
+# step 1 - update the image of the deployment of frontend with command line 
+kubectl set image deployment/bill-vue bill-vue=ottokafka2/bill-vue:0.0.3
+
+# step 2 - check the status of pods 
+kubectl get pods
+
+# step 3 - inspect the events of the deployment updates
+kubectl describe deployment bill-vue
+
+```
+### Canary Deployments
+
+Before updating, we have total 2 replicas of frontend pods created by bill-vue deployment.  
+
+```shell
+# step 1 - apply bill-frontend-deployments-canary.yaml
+kubectl apply -f bill-frontend-deployments-canary.yaml
+
+# step 2 - scale down the replicas of current deployment 
+kubectl scale down –replicas = 1 deployment/bill-vue
+
+# step 3 - testing the new deployment 
+
+# step 4 - scale the replicas of new deployment up to 2
+kubectl scale - -replicas=2 deployment/bill-vue-canary
+
+# step 5 - delete the original deployment 
+kubectl delete deployment bill-vue
+```
+After updating, we have total 2 replicas of frontend pods created by canary-bill-vue deployment.
