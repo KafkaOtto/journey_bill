@@ -1,0 +1,244 @@
+---
+# Source: bill-vue/templates/networkpolicy-ingress.yaml
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: bill-vue
+  namespace: "default"
+  labels:
+    helm.sh/chart: bill-vue-0.1.0
+    app.kubernetes.io/name: bill-vue
+    app.kubernetes.io/instance: bill-vue
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: bill-vue
+      app.kubernetes.io/instance: bill-vue
+  ingress:
+    # Allow inbound connections
+    - ports:
+        - port: 80
+      from:
+        - podSelector:
+            matchLabels:
+              bill-vue-client: "true"
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: ingress
+---
+# Source: bill-vue/templates/serviceaccount.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: bill-vue
+  namespace: "default"
+  labels:
+    helm.sh/chart: bill-vue-0.1.0
+    app.kubernetes.io/name: bill-vue
+    app.kubernetes.io/instance: bill-vue
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+automountServiceAccountToken: true
+---
+# Source: bill-vue/templates/frontend-configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: bill-vue-nginx-config
+  namespace: "default"
+data:
+  nginx.conf: 
+      upstream backend {
+        server bill-spring:8088;
+      }
+      server {
+        listen       80;
+        location / {
+          root   /usr/share/nginx/html;
+          index  index.html index.htm;
+          try_files $uri $uri/ /index.html;
+        }
+        location /api {
+          proxy_pass http://backend;
+        }
+      }
+---
+# Source: bill-vue/templates/role.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: bill-guest
+  namespace: "default"
+  labels:
+    helm.sh/chart: bill-vue-0.1.0
+    app.kubernetes.io/name: bill-vue
+    app.kubernetes.io/instance: bill-vue
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+rules:
+  - apiGroups:
+    - ""
+    resources:
+    - '*'
+    verbs:
+    - get
+    - list
+    - watch
+---
+# Source: bill-vue/templates/rolebinding.yaml
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: bill-guest
+  namespace: "default"
+  labels:
+    helm.sh/chart: bill-vue-0.1.0
+    app.kubernetes.io/name: bill-vue
+    app.kubernetes.io/instance: bill-vue
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+subjects:
+  - kind: ServiceAccount
+    name: bill-vue
+  - kind: User
+    name: guest
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: bill-guest
+---
+# Source: bill-vue/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: bill-vue
+  namespace: "default"
+  labels:
+    helm.sh/chart: bill-vue-0.1.0
+    app.kubernetes.io/name: bill-vue
+    app.kubernetes.io/instance: bill-vue
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: bill-vue
+    app.kubernetes.io/instance: bill-vue
+---
+# Source: bill-vue/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bill-vue-canary
+  namespace: "default"
+  labels:
+    helm.sh/chart: bill-vue-0.1.0
+    app.kubernetes.io/name: bill-vue
+    app.kubernetes.io/instance: bill-vue
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: bill-vue
+      app.kubernetes.io/instance: bill-vue
+  template:
+    metadata:
+      labels:
+        helm.sh/chart: bill-vue-0.1.0
+        app.kubernetes.io/name: bill-vue
+        app.kubernetes.io/instance: bill-vue
+        app.kubernetes.io/version: "1.16.0"
+        app.kubernetes.io/managed-by: Helm
+        bill-spring-client: "true"
+        role: frontend
+    spec:
+      serviceAccountName: bill-vue
+      securityContext:
+        {}
+      containers:
+        - name: bill-vue
+          securityContext:
+            {}
+          image: "ottokafka2/bill-vue:0.0.3"
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          resources:
+            {}
+          volumeMounts:
+            - mountPath: /etc/nginx/conf.d
+              name: nginx-config
+              readOnly: true
+      volumes:
+        - configMap:
+            items:
+            - key: nginx.conf
+              path: nginx.conf
+            name: bill-vue-nginx-config
+          name: nginx-config
+---
+# Source: bill-vue/templates/hpa.yaml
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: bill-vue
+  namespace: "default"
+  labels:
+    helm.sh/chart: bill-vue-0.1.0
+    app.kubernetes.io/name: bill-vue
+    app.kubernetes.io/instance: bill-vue
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: bill-vue
+  minReplicas: 2
+  maxReplicas: 4
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 80
+---
+# Source: bill-vue/templates/tests/test-connection.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "bill-vue-test-connection"
+  labels:
+    helm.sh/chart: bill-vue-0.1.0
+    app.kubernetes.io/name: bill-vue
+    app.kubernetes.io/instance: bill-vue
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['bill-vue:80']
+  restartPolicy: Never
