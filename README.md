@@ -90,6 +90,12 @@ kubectl auth can-i delete pod --as=developer
 kubectl auth can-i delete pod --as=manager
 ```
 
+
+# Rolling update and canary update
+
+You can use helm upgrade to set values for rolling update.
+For more update operation directly on yaml, check out [k8s-readme](bill-k8s/README.md)
+
 ## Experiences
 
 ### cert-manager leader election error
@@ -109,12 +115,4 @@ https://stackoverflow.com/questions/54506269/simple-ingress-from-host-with-micro
 
 ### check service account permission
 If you set permission for service account, check this out:
-https://stackoverflow.com/questions/54889458/kubernetes-check-serviceaccount-permissions
-
-
-
-dont set in different namespace
-
-https://cloud.google.com/kubernetes-engine/docs/how-to/internal-load-balance-ingress#create_a_firewall_rule
-
 https://stackoverflow.com/questions/54889458/kubernetes-check-serviceaccount-permissions
